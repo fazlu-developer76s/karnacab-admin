@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\CategoriesModal;
+use App\Models\ServiceModal;
 use Illuminate\Support\Facades\Storage;
 
-class CategoryController extends Controller
+class ServiceController extends Controller
 {
     public function index()
     {
-        $title = "Category List";
-        $allcategory = CategoriesModal::where('status', '!=', '3')->orderBy('id', 'desc')->get();
-        return view('categories.index', compact('title', 'allcategory'));
+        $title = "Service List";
+        $allservice = ServiceModal::where('status', '!=', '3')->orderBy('id', 'desc')->get();
+        return view('services.index', compact('title', 'allservice'));
+
     }
 
     public function create(Request $request)
@@ -27,32 +28,32 @@ class CategoryController extends Controller
             if ($check_data) {
                 $message = '';
                 if ($check_data->title == $request->title) {
-                    $message .= "Category ";
+                    $message .= "Service ";
                 }
                 if ($message) {
-                    return redirect()->route('category')
+                    return redirect()->route('service')
                         ->with('error', trim($message) . ' Already Exists');
                 }
             }
-            $categories = new CategoriesModal();
-            $categories->title = $request->title;
-            $categories->status = $request->status;
+            $services = new ServiceModal();
+            $services->title = $request->title;
+            $services->status = $request->status;
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
-                $filePath = $file->store('categories', 'public');
-                $categories->image = $filePath;
+                $filePath = $file->store('services', 'public');
+                $services->image = $filePath;
             }
-            $categories->save();
-            return redirect()->route('category')->with('success', 'Category Added Successfully');
+            $services->save();
+            return redirect()->route('service')->with('success', 'Service Added Successfully');
         }
     }
 
     public function edit($id)
     {
-        $title = "Edit Category";
-        $get_category = CategoriesModal::where('status', '!=', 3)->where('id', $id)->first();
-        $allcategory = CategoriesModal::where('status', '!=', '3')->orderBy('id', 'desc')->get();
-        return view('categories.index', compact('title', 'allcategory','get_category'));
+        $title = "Edit Service";
+        $get_service = ServiceModal::where('status', '!=', 3)->where('id', $id)->first();
+        $allservice = ServiceModal::where('status', '!=', '3')->orderBy('id', 'desc')->get();
+        return view('services.index', compact('title', 'allservice','get_service'));
     }
 
     public function update(Request $request)
@@ -66,48 +67,48 @@ class CategoryController extends Controller
         if ($check_data) {
             $message = '';
             if ($check_data->title == $request->title) {
-                $message .= "Category ";
+                $message .= "Service ";
             }
             if ($message) {
-                return redirect()->route('category.edit', ['id' => $request->hidden_id])
+                return redirect()->route('service.edit', ['id' => $request->hidden_id])
                     ->with('error', trim($message) . ' Already Exists');
             }
         }
-        $categories = CategoriesModal::findOrFail($request->hidden_id);
-        $categories->title = $request->title;
-        $categories->status = $request->status;
+        $services = ServiceModal::findOrFail($request->hidden_id);
+        $services->title = $request->title;
+        $services->status = $request->status;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filePath = $file->store('categories', 'public');
-            $categories->image = $filePath;
+            $filePath = $file->store('services', 'public');
+            $services->image = $filePath;
             if ($request->filled('hidden_image') && Storage::disk('public')->exists($request->hidden_image)) {
                 Storage::disk('public')->delete($request->hidden_image);
             }
         }
-        $categories->updated_at = date('Y-m-d H:i:s');
-        $categories->save();
-        return redirect()->route('category')->with('success', 'Category Updated Successfully');
+        $services->updated_at = date('Y-m-d H:i:s');
+        $services->save();
+        return redirect()->route('service')->with('success', 'Service Updated Successfully');
     }
 
 
     public function destroy($id)
     {
-        $categories = CategoriesModal::findOrFail($id);
-        $categories->status = 3;
-        $categories->update();
-        return redirect()->route('category')->with('success', 'Category deleted successfully.');
+        $services = ServiceModal::findOrFail($id);
+        $services->status = 3;
+        $services->update();
+        return redirect()->route('service')->with('success', 'Service deleted successfully.');
     }
 
     public function check_exist_data($request, $id)
     {
-        $query = CategoriesModal::where('status', '!=', 3);
+        $query = ServiceModal::where('status', '!=', 3);
         if ($id !== null) {
             $query->where('id', '!=', $id);
         }
-        $check_categories = $query->where(function ($q) use ($request) {
+        $check_services = $query->where(function ($q) use ($request) {
             $q->where('title', $request->title);
         })->first();
 
-        return $check_categories;
+        return $check_services;
     }
 }

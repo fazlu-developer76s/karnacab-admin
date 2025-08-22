@@ -27,22 +27,23 @@ class CompanyController extends Controller
     // Handle the update request
     public function update(Request $request, $id)
     {
+
         // Validate the request
         $request->validate([
-            'name' => 'required|string|max:255',
-            'logo' => 'nullable|image|mimes:jpg,jpeg,png,svg',
-            'favicon' => 'nullable|image|mimes:jpg,jpeg,png,svg',
-            'address' => 'required|string|max:500',
-            'email' => 'required|email',
-            'mobile' => 'required|numeric',
-            'facebook' => 'nullable|url',
-            'twitter' => 'nullable|url',
-            'instagram' => 'nullable|url',
-            'booking_tax' => 'required|numeric',
-            'min_price_filter' => 'required|numeric',
-            'max_price_filter' => 'required|numeric',
-            'linkedin' => 'nullable|url',
-            'map_link' => 'nullable|string',
+            // 'name' => 'required|string|max:255',
+            // 'logo' => 'nullable|image|mimes:jpg,jpeg,png,svg',
+            // 'favicon' => 'nullable|image|mimes:jpg,jpeg,png,svg',
+            // 'address' => 'required|string|max:500',
+            // 'email' => 'required|email',
+            // 'mobile' => 'required|numeric',
+            // 'facebook' => 'nullable|url',
+            // 'twitter' => 'nullable|url',
+            // 'instagram' => 'nullable|url',
+            // 'booking_tax' => 'required|numeric',
+            // 'min_price_filter' => 'required|numeric',
+            // 'max_price_filter' => 'required|numeric',
+            // 'linkedin' => 'nullable|url',
+            // 'map_link' => 'nullable|string',
         ]);
 
         // Find the company
@@ -73,8 +74,8 @@ class CompanyController extends Controller
         $company->header_script = $request->header_script;
         $company->footer_script = $request->footer_script;
         $company->booking_tax = $request->booking_tax;
-        $company->min_price_filter = $request->min_price_filter;
-        $company->max_price_filter = $request->max_price_filter;
+        // $company->min_price_filter = $request->min_price_filter;
+        // $company->max_price_filter = $request->max_price_filter;
         $company->map_link = $request->map_link;
         if ($request->youtube_link) {
             $company->youtube_link = $request->youtube_link;

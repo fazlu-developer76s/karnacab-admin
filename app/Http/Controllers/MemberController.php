@@ -314,4 +314,19 @@ class MemberController extends Controller
         return redirect()->route('profile.update')->with('success', 'Password Updated Successfully');
     }
 
+    public function change_status(Request $request)
+    {
+        $table_name = $request->table_name;
+        $id = $request->id;
+        $status = $request->status;
+
+        $change_status = DB::table($table_name)->where('id', $id)->update(['status' => $status, 'updated_at' => date('Y-m-d H:i:s')]);
+
+        if ($change_status) {
+            return response()->json(['status' => 'status changed successfully']);
+        } else {
+            return response()->json(['status' => false]);
+        }
+    }
+
 }

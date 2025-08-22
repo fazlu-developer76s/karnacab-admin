@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>{{ !empty($title) ? $title : 'Globstay' }} </title>
+    <title>{{ !empty($title) ? $title : 'Karnacab' }} </title>
     <style>
         .app-header {
             position: fixed !important;
@@ -46,7 +46,7 @@
         }
 
         .app-sidebar {
-            background: #67722e !important;
+            background: #ad1c17 !important;
             color: black !important;
         }
 
@@ -149,118 +149,6 @@
 </head>
 <!----Head----->
 @include('layouts.header')
-
 @include('layouts.sidebar')
 @yield('content')
-<div class="card-note-container">
-    <!-- Card-note 1 -->
-    @foreach ($helper->FollowupNotification() as $row )
-    @switch(@$row->lead_status)
-    @case(1)
-        @php $lead_status = "Initial Stage"; @endphp
-    @break
-
-    @case(2)
-        @php $lead_status = "Team Call"; @endphp
-    @break
-
-    @case(3)
-        @php $lead_status = "Call Disconnected"; @endphp
-    @break
-
-    @case(4)
-        @php $lead_status = "Ringing"; @endphp
-    @break
-
-    @case(5)
-        @php $lead_status = "Pipeline"; @endphp
-    @break
-
-    @case(6)
-        @php $lead_status = "Visit Align"; @endphp
-    @break
-
-    @case(7)
-        @php $lead_status = "Conversion"; @endphp
-    @break
-
-    @case(8)
-        @php $lead_status = "Rejected"; @endphp
-    @break
-
-    @case(9)
-        @php $lead_status = "Assign Lead"; @endphp
-    @break
-    @case(10)
-    @php $lead_status = "Visit Done"; @endphp
-        @break
-        @case(11)
-            @php $lead_status = "Breaking Period"; @endphp
-        @break
-        @case(12)
-            @php $lead_status = "Ask To Callback"; @endphp
-        @break
-        @case(13)
-            @php $lead_status = "Preferred Location"; @endphp
-        @break
-    @default
-        @php $lead_status = "Unknown"; @endphp
-@endswitch
-    <div class="card-note">
-        <i class="fa-solid fa-xmark" onclick="closeCard(this , '{{ $row->id }}')"></i>
-        <div class="content-note">
-            <h5>Lead {{ $lead_status }}</h5>
-            <p><strong>Name:</strong> {{ ucwords($row->name) }}</p>
-            <p><strong>Follow-up Date:</strong> {{ date('d-m-Y',strtotime($row->followup_date)) }}</p>
-            <p><strong>Lead Created By:</strong> {{ $row->name }} ({{ $row->role_name }})</p>
-        </div>
-        <a href="{{ route('lead.view',$row->id) }}" target="_blank"><button class="view-btn-note">View Lead Info</button></a>
-    </div>
-    @endforeach
-
-</div>
-<!-- Collect Emi Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal Form</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Form inside the modal -->
-                <form id="modalForm" action="/submit-form" method="POST">
-                    <div class="mb-3">
-                        <label for="loan_number" class="form-label">Loan Number</label>
-                        <input type="text" class="form-control" id="loan_number" name="loan_number" required
-                            placeholder="Please Enter Your Loan Number" oninput="FetchLoanDetail();">
-                    </div>
-                    <div class="mb-3 collect_name d-none">
-                        <label for="collect_name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="collect_name" name="collect_name" required>
-                    </div>
-                    <div class="mb-3 collect_amount d-none">
-                        <label for="collect_amount" class="form-label">Amount</label>
-                        <input type="text" class="form-control" id="collect_amount" name="collect_amount" required>
-                    </div>
-                    <div class="mb-3 collect_emi d-none">
-                        <label for="collect_emi" class="form-label">Emi</label>
-                        <input class="form-control" id="collect_emi" name="collect_emi" rows="3" required>
-                    </div>
-                    <div class="mb-3 collect_last_emi d-none">
-                        <label for="collect_last_emi" class="form-label">Last Emi</label>
-                        <input class="form-control" id="collect_last_emi" name="collect_last_emi" rows="3"
-                            required>
-                    </div>
-                    <div class="mb-3 collect_remark d-none">
-                        <label for="collect_remark" class="form-label">Remark</label>
-                        <textarea class="form-control" id="collect_remark" name="collect_remark" rows="3" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary submit_button d-none">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 @include('layouts.footer')

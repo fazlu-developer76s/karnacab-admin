@@ -33,7 +33,7 @@ class Enquirys extends Mailable
     public function build()
     {
         return $this->view('emails.enquiry') // specify the view for the email
-            ->subject('GlobStay Enquiry') // set the email subject
+            ->subject('Karnacab Enquiry') // set the email subject
             ->with('req', $this->request) // pass OTP to the view
             ->from($this->request->email, $this->request->name) // From address
             ->replyTo($this->request->email, $this->request->name); // From address

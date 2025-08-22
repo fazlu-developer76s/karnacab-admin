@@ -33,7 +33,7 @@ class CareerEnquirys extends Mailable
     public function build()
     {
         $email = $this->view('emails.careerenquiry') // Specify the view for the email
-            ->subject('GlobStay Enquiry') // Set the email subject
+            ->subject('Karnacab Enquiry') // Set the email subject
             ->with('req', $this->request) // Pass data to the view
             ->from($this->request->email, $this->request->name) // From address
             ->replyTo($this->request->email, $this->request->name); // Reply-To address

@@ -1,9 +1,9 @@
 @extends('layouts/app')
 @section('content')
-@if(isset($get_floor))
-@php $form_action = "floor.update" @endphp
+@if(isset($get_service))
+@php $form_action = "service.update" @endphp
 @else
-@php $form_action = "floor.create" @endphp
+@php $form_action = "service.create" @endphp
 @endif
     <div class="container-fluid">
         <div id="content" class="app-content">
@@ -11,10 +11,10 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-                        <li class="breadcrumb-item"><a href="javascript:;">Hotel Categories</a></li>
-                        <li class="breadcrumb-item active"><i class="fa fa-arrow-back"></i> Create Hotel Categories</li>
+                        <li class="breadcrumb-item"><a href="javascript:;"> Service </a></li>
+                        <li class="breadcrumb-item active"><i class="fa fa-arrow-back"></i> Create  Service </li>
                     </ol>
-                    <h1 class="page-header mb-0">Hotel Categories</h1>
+                    <h1 class="page-header mb-0"> Service </h1>
                 </div>
             </div>
             <!-- Row for equal division -->
@@ -24,19 +24,18 @@
                         <div class="card-header h6 mb-0 bg-none p-3 d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center">
                                 <i class="fa fa-user-shield fa-lg fa-fw text-dark text-opacity-50 me-1"></i>
-                                Add Hotel Categories
+                                Add  Service
                             </div>
                         </div>
                         <form action="{{ route($form_action) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" value="{{ (isset($get_floor)) ? $get_floor->id : '' ; }}" name="hidden_id">
+                            <input type="hidden" value="{{ (isset($get_service)) ? $get_service->id : '' ; }}" name="hidden_id">
                             <div class="card-body">
                                 <div class="row">
-
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label">Title</label>
-                                            <input class="form-control @error('title') is-invalid @enderror" type="text" name="title" placeholder="Enter Title" value="@if(empty($get_floor)) {{ old('title') }} @else {{ (isset($get_floor)) ? $get_floor->title : '' ; }} @endif" />
+                                            <input class="form-control @error('title') is-invalid @enderror" type="text" name="title" placeholder="Enter Title" value="@if(empty($get_service)) {{ old('title') }} @else {{ (isset($get_service)) ? $get_service->title : '' ; }} @endif" />
                                             @error('title')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -50,17 +49,17 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        @if(isset($get_floor->image))
-                                        <img src="{{ Storage::url($get_floor->image) }}" alt="" class="img-fluid" style="max-width: 80px; height: auto;" />
-                                        <input type="hidden" name="hidden_image" value="{{ $get_floor->image }}">
+                                        @if(isset($get_service->image))
+                                        <img src="{{ Storage::url($get_service->image) }}" alt="" class="img-fluid" style="max-width: 80px; height: auto;" />
+                                        <input type="hidden" name="hidden_image" value="{{ $get_service->image }}">
                                         @endif
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label">Status</label>
                                             <select class="form-control custom-select-icon @error('status') is-invalid @enderror" name="status">
-                                                <option value="1" {{ old('status') == 1 ? 'selected' : '' }} {{ (isset($get_floor) && $get_floor->status == 1) ? 'selected' : '' ; }}>Active </option>
-                                                <option value="2" {{ old('status') == 2 ? 'selected' : '' }} {{ (isset($get_floor) && $get_floor->status == 2) ? 'selected' : '' ; }}>Inactive </option>
+                                                <option value="1" {{ old('status') == 1 ? 'selected' : '' }} {{ (isset($get_service) && $get_service->status == 1) ? 'selected' : '' ; }}>Active</option>
+                                                <option value="2" {{ old('status') == 2 ? 'selected' : '' }} {{ (isset($get_service) && $get_service->status == 2) ? 'selected' : '' ; }}>Inactive</option>
                                             </select>
                                             @error('status')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -81,7 +80,7 @@
                     <div class="card border-0 mb-4">
                         <div class="card-header h6 mb-0 bg-none p-3 d-flex align-items-center" style="border-bottom: 1px solid #2196f3;">
                             <i class="fab fa-buromobelexperte fa-lg fa-fw text-dark text-opacity-50 me-1"></i>
-                            Hotel Categories List
+                             Service  List
                         </div>
                         <div class="card-body">
                             <table id="data-table-default" class="table table-striped table-bordered align-middle">
@@ -96,28 +95,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if($allfloor)
-                                    @foreach ($allfloor as $floor)
+                                    @if($allservice)
+                                    @foreach ($allservice as $service)
                                     <tr class="odd gradeX">
                                         <td width="1%" class="fw-bold text-dark">{{ $loop->iteration }}</td>
                                         <td>
-                                            <img src="{{ Storage::url($floor->image) }}" alt="" class="img-fluid" style="max-width: 30px; height: auto;" />
+                                            <img src="{{ Storage::url($service->image) }}" alt="" class="img-fluid" style="max-width: 80px; height: auto;" />
                                         </td>
-                                        <td>{{ $floor->title }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($floor->created_at)->format('d F Y h:i A') }}</td>
+                                        <td>{{ $service->title }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($service->created_at)->format('d F Y h:i A') }}</td>
                                         <td>
                                             <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault{{ $floor->id }}" {{ ($floor->status==1) ? 'checked' : '' }}  onchange="ChangeStatus('floor',{{ $floor->id }});" >
-                                              </div>
+                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault{{ $service->id }}" {{ ($service->status == 1) ? 'checked' : '' }} onchange="ChangeStatus('property_categories',{{ $service->id }});" >
+                                            </div>
                                         </td>
                                         <td>
-                                            <a href="{{ route('floor.edit', $floor->id) }}" class="text-primary me-2">
+                                            <a href="{{ route('service.edit', $service->id) }}" class="text-primary me-2">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <form action="{{ route('floor.destroy', $floor->id) }}" method="POST" style="display: inline;">
+                                            <form action="{{ route('service.destroy', $service->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-link text-danger p-0" onclick="return confirm('Are you sure you want to delete this floor?');">
+                                                <button type="submit" class="btn btn-link text-danger p-0" onclick="return confirm('Are you sure you want to delete this route?');">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>
@@ -133,5 +132,4 @@
             </div>
         </div>
     </div>
-
 @endsection

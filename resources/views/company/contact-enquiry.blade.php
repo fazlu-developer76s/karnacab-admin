@@ -142,7 +142,7 @@
                         <div class="card-header h6 mb-0 bg-none p-3 d-flex align-items-center" style="border-bottom: 1px solid #2196f3;">
                             <i class="fab fa-buromobelexperte fa-lg fa-fw text-dark text-opacity-50 me-1"></i>
                             Enquiry List
-                            <!--<a href="{{ route('lead.create') }}" class="ms-auto">-->
+                            <!--<a href="{{ route('service') }}" class="ms-auto">-->
                             <!--    <button class="btn btn-primary">Create Lead</button>-->
                             <!--</a>-->
                         </div>
@@ -331,7 +331,7 @@
 
                                         <td>
                                             @if(!empty($lead->property_id))
-                                            <a href="{{ $lead->property_id ? 'https://globstay.com/details/' . $lead->property_id : '#' }}" target="_blank">
+                                            <a href="{{ $lead->property_id ? 'https://Karnacab.com/details/' . $lead->property_id : '#' }}" target="_blank">
                                                 View
                                             </a>
                                         @else

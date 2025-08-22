@@ -67,7 +67,7 @@
 </style>
 
 @php
-    $form_action = isset($all_loan) ? "lead.update" : "lead.create";
+    $form_action = isset($all_loan) ? "lead.update" : "service";
 @endphp
 
 <div class="container-fluid">

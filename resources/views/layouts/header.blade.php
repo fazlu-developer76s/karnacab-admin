@@ -23,7 +23,7 @@
         </div> --}}
 
 
-        {{-- <a href="{{ route('lead.create') }}"><button class="btn btn-primary">Add Lead</button></a> --}}
+        {{-- <a href="{{ route('service') }}"><button class="btn btn-primary">Add Lead</button></a> --}}
         <div class="navbar-item navbar-user dropdown">
             <a href="#"
                 class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown"> <img
