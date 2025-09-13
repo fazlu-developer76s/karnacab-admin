@@ -11,7 +11,7 @@ class WebsiteController extends Controller
     public function index()
     {
         $title = "KarnaCab - Bharat Moves On KarnaCab!";
-        return view('website.about',compact('title'));
+        return view('website.index',compact('title'));
     }
 
     public function about_us(){
