@@ -12,10 +12,13 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\SeoController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\WebsiteController;
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('auth.login');
 });
+    Route::get('/', [WebsiteController::class, 'index'])->name('/');
+    Route::get('/about-us', [WebsiteController::class, 'about_us'])->name('about-us');
 
 Auth::routes();
 // Grouping all routes with auth middleware

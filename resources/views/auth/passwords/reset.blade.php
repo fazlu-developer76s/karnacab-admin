@@ -7,82 +7,108 @@
 <meta charset="utf-8" />
 <title>Loanswala</title>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-<!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/'.$company->favicon) }}">
 <link href="{{ asset('assets/css/fontawesome.css') }}" rel="stylesheet" />
 <link href="{{ asset('assets/css/vendor.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('assets/css/default/app.min.css') }}" rel="stylesheet" />
+<style>
+    body.auth-page {
+        /* background: #f5f8fa url('{{ asset('assets/img/login.png') }}') no-repeat center center; */
+        background-size: cover;
+    }
+    .auth-card {
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        overflow: hidden;
+        border: none;
+    }
+    .auth-header-box {
+        background: #206333;
+        color: #fff;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+    .auth-header-box img {
+        max-height: 70px;
+        margin-bottom: 15px;
+    }
+    .auth-header-box h4 {
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #206333;
+    }
+    .btn-primary {
+        background-color: #206333;
+        border-color: #206333;
+        transition: all 0.3s;
+    }
+    .btn-primary:hover {
+        background-color: #F2B929;
+        border-color: #F2B929;
+        color: #206333;
+    }
+    .back-login-link {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        color: #206333;
+    }
+    .back-login-link:hover {
+        text-decoration: underline;
+        color: #F2B929;
+    }
+</style>
 </head>
-<body id="body" class="auth-page" style="background:#f5f8fa url('{{ asset('assets/img/login.png') }}'); background-size: cover; background-position: center center;">
- <div class="container-md">
-        <div class="row vh-100 d-flex justify-content-center">
-            <div class="col-12 align-self-center">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-4 mx-auto">
-                            <div class="card">
-                                <div class="card-body p-0 auth-header-box"  style="background: #f2f2f3;">
-                                    <div class="text-center p-3">
-                                        <a class="logo logo-admin">
-                                           <img src="{{ asset('storage/'.$company->logo) }}" height="70" alt="logo" class="auth-logo">
-                                        </a>
-                                        <h4 class="mt-3 mb-1 fw-semibold text-dark font-18">Reset Password</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body pt-0">
-                                    <form method="POST" class="my-4" action="{{ route('password.update') }}">
-                                        @csrf
+<body id="body" class="auth-page">
+<div class="container">
+    <div class="row vh-100 d-flex justify-content-center align-items-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card auth-card">
+                <div class="auth-header-box">
+                    <img src="{{ asset('storage/'.$company->logo) }}" alt="logo" class="auth-logo">
+                    <h4>Reset Password</h4>
+                    <p class="text-light">Enter your new password below</p>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST" action="{{ route('password.update') }}">
+                        @csrf
+                        <input type="hidden" name="token" value="{{ $token }}">
 
-                                        <input type="hidden" name="token" value="{{ $token }}">
-
-                                        <div class="form-floating mb-20px d-none">
-                                            <input id="email" type="email" class="form-control fs-13px h-45px @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="Email Address" />
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                            <label for="email" class="d-flex align-items-center py-0">Email Address</label>
-                                        </div>
-
-                                        <div class="form-floating mb-20px">
-                                            <input id="password" type="password" class="form-control fs-13px h-45px @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="New Password" />
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                            <label for="password" class="d-flex align-items-center py-0">New Password</label>
-                                        </div>
-
-                                        <div class="form-floating mb-20px">
-                                            <input id="password-confirm" type="password" class="form-control fs-13px h-45px" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password" />
-                                            <label for="password-confirm" class="d-flex align-items-center py-0">Confirm Password</label>
-                                        </div>
-
-                                        <div class="form-group mb-0 row">
-                                            <div class="col-12">
-                                                <div class="d-grid">
-                                                    <button class="btn btn-primary" type="submit">
-                                                        {{ __('Reset Password') }} <i class="fas fa-sync-alt ms-1"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            @if (Route::has('login'))
-                                                <a class="btn btn-link mt-3" href="{{ route('login') }}">
-                                                    {{ __('Back to Login') }}
-                                                </a>
-                                            @endif
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">New Password</label>
+                            <input id="password" type="password"
+                                   class="form-control @error('password') is-invalid @enderror"
+                                   name="password" required autocomplete="new-password" placeholder="Enter new password">
+                            @error('password')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
                         </div>
-                    </div>
+
+                        <div class="mb-3">
+                            <label for="password-confirm" class="form-label">Confirm Password</label>
+                            <input id="password-confirm" type="password"
+                                   class="form-control" name="password_confirmation"
+                                   required autocomplete="new-password" placeholder="Confirm new password">
+                        </div>
+
+                        <div class="d-grid mb-3">
+                            <button class="btn btn-primary btn-lg" type="submit">
+                                Reset Password <i class="fas fa-sync-alt ms-2"></i>
+                            </button>
+                        </div>
+
+                        @if (Route::has('login'))
+                            <a href="{{ route('login') }}" class="back-login-link">Back to Login</a>
+                        @endif
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
