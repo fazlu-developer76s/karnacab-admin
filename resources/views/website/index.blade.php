@@ -144,7 +144,7 @@
                         <li><i class="fas fa-headset"></i> Sanitized vehicles and masks worn</li>
                         <li><i class="fas fa-map-marker-alt"></i> Live location sharing with friends & family</li>
                     </ul>
-                    <a href="#" class="btn safety-btn mt-4">Know More →</a>
+                    <a href="{{ route('safety') }}" class="btn safety-btn mt-4">Know More →</a>
                 </div>
 
                 <!-- Right Image -->

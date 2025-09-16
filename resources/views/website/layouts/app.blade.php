@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ ($title) ? $title : "Karnacab" }}</title>
+    <title>{{ $title ? $title : 'Karnacab' }}</title>
     <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -29,13 +29,38 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('/') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('about-us') }}">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Safety</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Careers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Press</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+
+                    {{-- <li class="nav-item"><a class="nav-link" href="#">Press</a></li> --}}
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('/') ? 'active' : '' }}"
+                            href="{{ route('/') }}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
+                            href="{{ route('about') }}">About Us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('safety') || request()->routeIs('safety.detail') ? 'active' : '' }}"
+                            href="{{ route('safety') }}">Safety</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('career') ? 'active' : '' }}"
+                            href="{{ route('career') }}">Careers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('blogs') || request()->routeIs('blog.detail') ? 'active' : '' }}"
+                            href="{{ route('blogs') }}">Blog</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
+                            href="{{ route('contact') }}">Contact Us</a>
+                    </li>
+
                     <li class="nav-item ms-3">
                         <a class="btn btn-download" href="#">Download App</a>
                     </li>
@@ -55,26 +80,29 @@
                 <div class="col-lg-3 col-md-6">
                     <h4 class="footer-title">Customer App</h4>
                     <p>Download our app to book rides easily and enjoy seamless travel.</p>
-                    <a href="#"><img src="{{ asset('website_assets/images/gplay.PNG') }}" class="img-fluid mb-2" alt="Google Play"></a>
-                    <a href="#"><img src="{{ asset('website_assets/images/apstore.PNG') }}" class="img-fluid" alt="App Store"></a>
+                    <a href="#"><img src="{{ asset('website_assets/images/gplay.PNG') }}" class="img-fluid mb-2"
+                            alt="Google Play"></a>
+                    <a href="#"><img src="{{ asset('website_assets/images/apstore.PNG') }}" class="img-fluid"
+                            alt="App Store"></a>
                 </div>
 
                 <!-- Captain App -->
                 <div class="col-lg-3 col-md-6">
                     <h4 class="footer-title">Captain App</h4>
                     <p>Our dedicated app for captains to manage rides and earnings efficiently.</p>
-                    <a href="#"><img src="{{ asset('website_assets/images/gplay.PNG') }}" class="img-fluid" alt="Google Play"></a>
+                    <a href="#"><img src="{{ asset('website_assets/images/gplay.PNG') }}" class="img-fluid"
+                            alt="Google Play"></a>
                 </div>
 
                 <!-- Quick Links -->
                 <div class="col-lg-2 col-md-6 footer-links">
                     <h4 class="footer-title">Quick Links</h4>
                     <!-- <ul> -->
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Safety</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="{{ route('/') }}">Home</a></li>
+                    <li><a href="{{ route('about') }}">About Us</a></li>
+                    <li><a href="{{ route('safety') }}">Safety</a></li>
+                    <li><a href="{{ route('career') }}">Careers</a></li>
+                    <li><a href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
                     <!-- </ul> -->
 
                 </div>
@@ -82,20 +110,20 @@
                 <!-- Customers -->
                 <div class="col-lg-2 col-md-6 footer-links">
                     <h4 class="footer-title">Customers</h4>
-                    <li><a href="termsandcondition.php">Terms - Bike Taxi</a></li>
-                    <li><a href="termsandcondition.php">Terms - Cabs & Auto</a></li>
-                    <li><a href="termsandcondition.php">Corporate Affairs</a></li>
-                    <li><a href="termsandcondition.php">Support</a></li>
+                    <li><a href="{{ route('customer.terms.bike') }}">Terms - Bike Taxi</a></li>
+                    <li><a href="{{ route('customer.terms.auto') }}">Terms - Cabs & Auto</a></li>
+                    <li><a href="{{ route('corporate.affairs') }}">Corporate Affairs</a></li>
+                    {{-- <li><a href="{{ route('privacy.policy') }}">Support</a></li> --}}
                 </div>
 
                 <!-- Captains -->
                 <div class="col-lg-2 col-md-6 footer-links">
                     <h4 class="footer-title">Captains</h4>
-                    <li><a href="termsandcondition.php">Terms - Bike Taxi</a></li>
-                    <li><a href="termsandcondition.php">Terms - Cabs & Auto</a></li>
-                    <li><a href="termsandcondition.php">Blog</a></li>
-                    <li><a href="termsandcondition.php">Press</a></li>
-                    <li><a href="termsandcondition.php">Captain Support</a></li>
+                    <li><a href="{{ route('captain.terms.bike') }}">Terms - Bike Taxi</a></li>
+                    <li><a href="{{ route('captain.terms.auto') }}">Terms - Cabs & Auto</a></li>
+                    <li><a href="{{ route('blogs') }}">Blog</a></li>
+                    {{-- <li><a href="termsandcondition.php">Press</a></li> --}}
+                    {{-- <li><a href="termsandcondition.php">Captain Support</a></li> --}}
                 </div>
 
                 <!-- Contact & Social -->

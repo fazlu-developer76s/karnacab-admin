@@ -14,12 +14,24 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\WebsiteController;
 
+
+    Route::get('/', [WebsiteController::class, 'index'])->name('/');
+    Route::get('/about-us', [WebsiteController::class, 'about_us'])->name('about');
+    Route::get('/blogs', [WebsiteController::class, 'blogs'])->name('blogs');
+    Route::get('/blog-detail', [WebsiteController::class, 'blog_detail'])->name('blog.detail');
+    Route::get('/captain-terms-auto', [WebsiteController::class, 'captain_terms_auto'])->name('captain.terms.auto');
+    Route::get('/captain-terms-bike', [WebsiteController::class, 'captain_terms_bike'])->name('captain.terms.bike');
+    Route::get('/career', [WebsiteController::class, 'career'])->name('career');
+    Route::get('/contact', [WebsiteController::class, 'contact'])->name('contact');
+    Route::get('/corporate-affairs', [WebsiteController::class, 'corporate_affairs'])->name('corporate.affairs');
+    Route::get('/customer-terms-auto', [WebsiteController::class, 'customer_terms_auto'])->name('customer.terms.auto');
+    Route::get('/customer-terms-bike', [WebsiteController::class, 'customer_terms_bike'])->name('customer.terms.bike');
+    Route::get('/privacy-policy', [WebsiteController::class, 'privacy_policy'])->name('privacy.policy');
+    Route::get('/safety', [WebsiteController::class, 'safety'])->name('safety');
+    Route::get('/safety-detail', [WebsiteController::class, 'safety_detail'])->name('safety.detail');
 Route::get('/admin', function () {
     return view('auth.login');
 });
-    Route::get('/', [WebsiteController::class, 'index'])->name('/');
-    Route::get('/about-us', [WebsiteController::class, 'about_us'])->name('about-us');
-
 Auth::routes();
 // Grouping all routes with auth middleware
 Route::middleware(['auth', 'checkRole'])->group(function () {
