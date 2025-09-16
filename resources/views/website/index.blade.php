@@ -6,7 +6,7 @@
         <div class="hero-overlay"></div>
         <div class="container hero-container text-white">
             <div class="row align-items-center">
-                <div class="col-lg-6">
+                <div class="col-lg-6 mt-2">
                     <h1 class="hero-title">Ride Faster with KarnaCab!</h1>
                     <p class="hero-subtitle">Reliable, affordable, and quick rides — Bike Taxi, Auto, Cabs & more at your fingertips.</p>
                     <form class="ride-form mt-4">
@@ -20,7 +20,7 @@
                     </form>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="https://gaadiwaadi.com/wp-content/uploads/2018/10/new-car-launch-november-2018-e1540755340753.jpg" alt="Bike Taxi" class="hero-image">
+                    <img src="{{ asset('website_assets/images/home_page_banner.jpg') }}" alt="Bike Taxi" class="hero-image">
                 </div>
             </div>
         </div>
