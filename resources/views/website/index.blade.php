@@ -56,7 +56,7 @@
         <div class="container">
             <!-- Block 1 -->
             <div class="row align-items-center mb-5">
-                <div class="col-md-6 pe-md-5">
+                <div class="col-md-6 pe-md-5 mb-2">
                     <h2 class="feature-title mb-3">{!! $get_quick->title ?? '' !!}</h2>
                     <div class="title-underline mb-3"></div>
                     <p class="feature-description mb-4">
@@ -66,17 +66,17 @@
                 </div>
                 <div class="col-md-6">
                     <div class="image-grid">
-                        <img src="{{ asset('website_assets/images/customer_veh.webp') }}" alt="Ride 1" class="grid-image">
-                        <img src="{{ asset('website_assets/images/customer_veh.webp') }}" alt="Ride 2" class="grid-image">
-                        <img src="{{ asset('website_assets/images/customer_veh.webp') }}" alt="Ride 3" class="grid-image">
-                        <img src="{{ asset('website_assets/images/customer_veh.webp') }}" alt="Ride 4" class="grid-image">
+                        <img src="{{ asset('website_assets/images/KarnaCabImages - 06.png') }}" alt="Ride 1" class="grid-image">
+                        <img src="{{ asset('website_assets/images/KarnaCabImages - 08.png') }}" alt="Ride 2" class="grid-image">
+                        <img src="{{ asset('website_assets/images/KarnaCabImages - 04.png') }}" alt="Ride 4" class="grid-image">
+                        <img src="{{ asset('website_assets/images/02.png') }}" alt="Ride 3" class="grid-image">
                     </div>
                 </div>
             </div>
 
             <!-- Block 2 -->
             <div class="row align-items-center flex-md-row-reverse">
-                <div class="col-md-6 ps-md-5">
+                <div class="col-md-6 ps-md-5 mb-2">
                     <h2 class="feature-title mb-3">{!! $drive->title ?? '' !!}</h2>
                     <div class="title-underline mb-3"></div>
                     <p class="feature-description mb-4">
@@ -86,10 +86,10 @@
                 </div>
                 <div class="col-md-6">
                     <div class="image-grid">
-                        <img src="{{ asset('website_assets/images/customer_veh.webp') }}" alt="Captain 1" class="grid-image">
-                        <img src="{{ asset('website_assets/images/customer_veh.webp') }}" alt="Captain 2" class="grid-image">
-                        <img src="{{ asset('website_assets/images/customer_veh.webp') }}" alt="Captain 3" class="grid-image">
-                        <img src="{{ asset('website_assets/images/customer_veh.webp') }}" alt="Captain 4" class="grid-image">
+                        <img src="{{ asset('website_assets/images/KarnaCabImages - 09.png') }}" alt="Captain 1" class="grid-image">
+                        <img src="{{ asset('website_assets/images/KarnaCabImages - 01.png') }}" alt="Captain 2" class="grid-image">
+                        <img src="{{ asset('website_assets/images/KarnaCabImages - 03.png') }}" alt="Captain 3" class="grid-image">
+                        <img src="{{ asset('website_assets/images/KarnaCabImages - 05.png') }}" alt="Captain 4" class="grid-image">
                     </div>
                 </div>
             </div>

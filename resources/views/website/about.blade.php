@@ -15,7 +15,7 @@
                     <a href="#" class="btn-about">Book a Ride</a>
                 </div>
                 <div class="about-hero-images">
-                    <img src="{{ Storage::url($india->image) }}" alt="Person on a bike" class="hero-img1">
+                    <img src="{{ asset('website_assets/images/KarnaCabImages - 02.png') }}" alt="Person on a bike" class="hero-img1">
                     <img src="{{ Storage::url($india->image) }}" alt="Person using app" class="hero-img2">
                 </div>
             </div>
@@ -60,10 +60,20 @@
                     travel. Every ride reflects our promise of reliability, convenience, and unmatched service quality.</p>
                 <div class="founders">
                     <div class="founder-card">
+                        <img src="{{ asset('website_assets/images/aman_kumar.jpg') }}"
+                            alt="Sneha Kapoor">
+                        <p><strong>Aman Kumar</strong></p>
+                        <p>Founder & CMD</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="founder-card">
                         <img src="{{ asset('website_assets/images/amit_kumar.jpg') }}"
                             alt="Ananya Sharma">
                         <p><strong>Amit Kumar</strong></p>
-                        <p>Co-Founder & CEO</p>
+                        <p>Co-founder & CEO & CTO</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -74,29 +84,20 @@
                         <img src="{{ asset('website_assets/images/kunal_roy.jpg') }}"
                             alt="Rahul Mehta">
                         <p><strong>Kunal Roy</strong></p>
-                        <p>Chief Marketing Officer</p>
+                        <p>Co-founder COO & CFO</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
 
-                    <div class="founder-card">
-                        <img src="{{ asset('website_assets/images/aman_kumar.jpg') }}"
-                            alt="Sneha Kapoor">
-                        <p><strong>Aman Kumar</strong></p>
-                        <p>Head of Product</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
+
 
                     <div class="founder-card">
-                        <img src="{{ asset('website_assets/images/rahul_kumar_bushan.jpg') }}"
+                        <img src="{{ asset('website_assets/images/rahul_kumar_bushan1.jpg') }}"
                             alt="Vikram Singh">
-                        <p><strong>Vikram Singh</strong></p>
-                        <p>Aman Kumar Bushan</p>
+                        <p><strong>Rahul Kumar Bushan</strong></p>
+                        <p>CMO</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>

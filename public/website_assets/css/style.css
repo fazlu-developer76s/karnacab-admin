@@ -747,6 +747,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s ease;
+    margin-top: 10px !important;
 }
 .hero-img1:hover,
 .hero-img2:hover {
@@ -877,11 +878,15 @@ body {
     }
     .hero-img2 {
         position: absolute;
-        top: -2px;
-        right: 10px !important;
+        top: -53px;
+        margin-bottom: 10px !important;
+        right: 60px !important;
 
         width: 240px;
     }
+.hero-img1 {
+    display: none;
+}
 }
 @media (max-width: 576px) {
     .about-hero {
