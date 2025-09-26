@@ -97,7 +97,7 @@
                         <img src="{{ asset('website_assets/images/rahul_kumar_bushan1.jpg') }}"
                             alt="Vikram Singh">
                         <p><strong>Rahul Kumar Bushan</strong></p>
-                        <p>CMO</p>
+                        <p>Co-founder & CMO</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>

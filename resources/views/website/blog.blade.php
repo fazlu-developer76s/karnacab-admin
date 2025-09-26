@@ -8,7 +8,7 @@
         <div class="row g-4">
             @foreach($blogs as $blog)
                 <div class="col-lg-4 col-md-6">
-                    <a href="{{ $blog->blog_link ?? '#' }}" class="blog-card d-block text-decoration-none">
+                    <a href="{{ route('blog.detail' , $blog->id) }}" class="blog-card d-block text-decoration-none">
                         <div class="blog-img">
                             <img src="{{ Storage::url($blog->image) }}" alt="{{ $blog->title }}" class="img-fluid rounded-top">
                         </div>
@@ -16,7 +16,7 @@
                             <p class="blog-date">{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</p>
                             <h2 class="blog-title">{{ $blog->title }}</h2>
                             <p class="blog-excerpt">{!! \Illuminate\Support\Str::limit(strip_tags($blog->short_content), 100) !!}</p>
-                            <a href="{{ $blog->blog_link ?? '#' }}"><span class="read-more">Read More →</span></a>
+                            <a href="{{ route('blog.detail' , $blog->id) }}"><span class="read-more">Read More →</span></a>
                         </div>
                     </a>
                 </div>
