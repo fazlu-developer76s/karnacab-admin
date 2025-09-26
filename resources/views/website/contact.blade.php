@@ -3,8 +3,8 @@
 <!-- ✅ Hero Section -->
 <section class="contact-hero d-flex align-items-center text-center text-white">
   <div class="container">
-    <h1 class="hero-title">Contact Us</h1>
-    <p class="hero-subtitle">We’d love to hear from you! Reach out for queries or support.</p>
+    <h1 class="hero-title">Get in Touch with KarnaCab</h1>
+    <p class="hero-subtitle">Have questions, feedback, or need support? Our team is here to help you. Reach out to us anytime, and we’ll make sure your journey with KarnaCab is smooth and hassle-free.</p>
   </div>
 </section>
 
@@ -50,27 +50,44 @@
       </div>
 
       <!-- Contact Info -->
-      <div class="col-lg-5">
-        <div class="address-details p-4 rounded shadow-sm bg-light">
-          <h3 class="mb-3">Our Offices</h3>
+<div class="col-lg-5">
+    <div class="address-details p-4 rounded shadow-sm bg-light">
+        <h3 class="mb-3">Our Offices</h3>
 
-          <div class="mb-4">
+        <div class="mb-4">
             <h5 class="text-accent">📍 Registered Office</h5>
-            <p>Roppen Transportation Services Pvt Ltd, 3rd Floor, Sai Prithvi Arcade, Megha Hills, Sri Rama Colony, Madhapur, Hyderabad - 500081.</p>
-            <p><strong>CIN:</strong> U63221GT2015PTC097115</p>
-          </div>
-
-          <div class="mb-4">
-            <h5 class="text-accent">🏢 City Office</h5>
-            <p>Roppen Transportation Services Pvt Ltd, #48, 1st Floor, SLV Nilaya, 5th Main 60ft Road, HSR Layout, 7th Sector, Bangalore - 560102.</p>
-          </div>
-
-          <div>
-            <h5 class="text-accent">🏢 Corporate Office</h5>
-            <p>Mantri Commerce - Spatium Tower A, Sy No 5/12, 5/13, 5/14, Devarabeesanahalli Village, Bangalore East Taluk, Bangalore.</p>
-          </div>
+            <p>{{ $globalSeo->address }}</p>
+            <p><strong>Email:</strong> {{ $globalSeo->email }}</p>
+            <p><strong>Mobile:</strong> {{ $globalSeo->mobile }}</p>
         </div>
-      </div>
+
+        @if($globalSeo->map_link)
+        <div class="mb-4">
+            <h5 class="text-accent">📌 Location Map</h5>
+            <a href="{{ $globalSeo->map_link }}" target="_blank">View on Map</a>
+        </div>
+        @endif
+
+        <div class="social-links">
+            @if($globalSeo->facebook)
+            <a href="{{ $globalSeo->facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            @endif
+            @if($globalSeo->twitter)
+            <a href="{{ $globalSeo->twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>
+            @endif
+            @if($globalSeo->instagram)
+            <a href="{{ $globalSeo->instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+            @endif
+            @if($globalSeo->linkedin)
+            <a href="{{ $globalSeo->linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            @endif
+            @if($globalSeo->youtube_link)
+            <a href="{{ $globalSeo->youtube_link }}" target="_blank"><i class="fab fa-youtube"></i></a>
+            @endif
+        </div>
+    </div>
+</div>
+
 
     </div>
   </div>

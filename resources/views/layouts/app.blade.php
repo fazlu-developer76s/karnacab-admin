@@ -46,7 +46,7 @@
         }
 
         .app-sidebar {
-            background: #ad1c17 !important;
+            background: #206333 !important;
             color: black !important;
         }
 

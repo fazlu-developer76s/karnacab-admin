@@ -602,7 +602,7 @@
               <div class="row">
                  <div class="col-lg-12">
                     <div class="footer-ft">
-                       <p>Copyright © 2021 {{ @$company->name }}. All rights reserved. Powered By <a href="https://nerasoft.app/n/" target="blank">{{ @$company->name }}</a></p>
+                       <p>Copyright © 2021 {{ @$company->name }}. All rights reserved. Powered By <a href="https://karnacab.in/" target="blank">{{ @$company->name }}</a></p>
                     </div>
                  </div>
               </div>

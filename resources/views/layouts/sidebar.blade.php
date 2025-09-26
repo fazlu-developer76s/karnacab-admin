@@ -82,7 +82,7 @@
                 </div>
             </div>
 
-            <div class="menu-item has-sub"> <a href="javascript:;" class="menu-link ">
+            {{-- <div class="menu-item has-sub"> <a href="javascript:;" class="menu-link ">
                     <div class="menu-icon"> <i class="fas fa-list"></i> </div>
                     <div class="menu-text">Our Gallary</div>
                     <div class="menu-caret"></div>
@@ -94,7 +94,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
               <div class="menu-item has-sub"> <a href="javascript:;" class="menu-link ">
                     <div class="menu-icon"> <i class="fas fa-list"></i> </div>
@@ -104,17 +104,52 @@
                 <div class="menu-submenu">
                     <div class="menu-item">
                         <a href="{{ route('pages.edit', 1) }}" class="menu-link ">
-                            <div class="menu-text">About Us</div>
+                            <div class="menu-text">Get Quick Rides, Low Fares</div>
                         </a>
                     </div>
                     <div class="menu-item">
                         <a href="{{ route('pages.edit', 2) }}" class="menu-link ">
-                            <div class="menu-text">Our Vision</div>
+                            <div class="menu-text">Flexible Hours & High Earnings</div>
                         </a>
                     </div>
                     <div class="menu-item">
                         <a href="{{ route('pages.edit', 3) }}" class="menu-link ">
-                            <div class="menu-text">Career</div>
+                            <div class="menu-text">Safety For All — Your Peace Of Mind</div>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="{{ route('pages.edit', 4) }}" class="menu-link ">
+                            <div class="menu-text">India's Beloved Bike Taxi Service</div>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="{{ route('pages.edit', 5) }}" class="menu-link ">
+                            <div class="menu-text"> Rider Terms – Bike Taxi</div>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="{{ route('pages.edit', 6) }}" class="menu-link ">
+                            <div class="menu-text">Rider Terms - Cabs & Auto </div>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="{{ route('pages.edit', 7) }}" class="menu-link ">
+                            <div class="menu-text">Partner Terms – Bike Taxi</div>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="{{ route('pages.edit', 8) }}" class="menu-link ">
+                            <div class="menu-text">Partner - Cabs & Auto </div>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="{{ route('pages.edit', 9) }}" class="menu-link ">
+                            <div class="menu-text">Corporate Affairs</div>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="{{ route('pages.edit', 10) }}" class="menu-link ">
+                            <div class="menu-text">Privacy Policy</div>
                         </a>
                     </div>
                 </div>

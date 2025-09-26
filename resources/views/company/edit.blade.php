@@ -112,7 +112,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 d-none">
                                         <div class="mb-3">
                                             <label class="form-label">Twitter Link</label>
                                             <input type="url" name="twitter" class="form-control" value="{{ old('twitter', $company->twitter) }}">
@@ -130,7 +130,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 d-none">
                                         <div class="mb-3">
                                             <label class="form-label">LinkedIn Link</label>
                                             <input type="url" name="linkedin" class="form-control" value="{{ old('linkedin', $company->linkedin) }}">
@@ -148,24 +148,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                        <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Min Price (Filter)</label>
-                                            <input type="number" name="min_price_filter" class="form-control" value="{{ old('min_price_filter', $company->min_price_filter) }}">
-                                            @error('min_price_filter')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                        <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Max Price (Filter))</label>
-                                            <input type="number" name="max_price_filter" class="form-control" value="{{ old('max_price_filter', $company->max_price_filter) }}">
-                                            @error('max_price_filter')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
+
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label class="form-label">Youtube Link</label>

@@ -43,6 +43,15 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
+                                            <label class="form-label">Text</label>
+                                            <input class="form-control @error('text') is-invalid @enderror" type="text" name="text" placeholder="Enter text" value="@if(empty($get_service)) {{ old('text') }} @else {{ (isset($get_service)) ? $get_service->text : '' ; }} @endif" />
+                                            @error('text')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
                                             <label class="form-label">Image</label>
                                             <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" />
                                             @error('image')

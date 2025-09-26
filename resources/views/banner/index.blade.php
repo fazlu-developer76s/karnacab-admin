@@ -61,13 +61,14 @@
                                             <select class="form-control custom-select-icon @error('type') is-invalid @enderror" name="type">
                                                 <option value="">Select Banner</option>
                                                 <option value="home" {{ old('type') == "home" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "home") ? 'selected' : '' ; }}>Home</option>
-                                                <option value="about" {{ old('type') == "about" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "about") ? 'selected' : '' ; }}>About Us</option>
-                                                <option value="project" {{ old('type') == "project" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "project") ? 'selected' : '' ; }}>Projects</option>
-                                                <option value="contact" {{ old('type') == "contact" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "contact") ? 'selected' : '' ; }}>Contact Us</option>
-                                                <option value="testimonial" {{ old('type') == "testimonial" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "testimonial") ? 'selected' : '' ; }}>Testimonial</option>
-                                                <option value="blog " {{ old('type') == "blog" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "blog") ? 'selected' : '' ; }}>Blogs</option>
-                                                     <option value="career " {{ old('type') == "career" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "career") ? 'selected' : '' ; }}>Career</option>
-                                                     <option value="booking " {{ old('type') == "booking" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "booking") ? 'selected' : '' ; }}>Booking</option>
+                                                <option value="safety" {{ old('type') == "safety" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "safety") ? 'selected' : '' ; }}>Safety</option>
+                                                {{-- <option value="about" {{ old('type') == "about" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "about") ? 'selected' : '' ; }}>About Us</option> --}}
+                                                {{-- <option value="project" {{ old('type') == "project" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "project") ? 'selected' : '' ; }}>Projects</option> --}}
+                                                {{-- <option value="contact" {{ old('type') == "contact" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "contact") ? 'selected' : '' ; }}>Contact Us</option> --}}
+                                                {{-- <option value="testimonial" {{ old('type') == "testimonial" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "testimonial") ? 'selected' : '' ; }}>Testimonial</option> --}}
+                                                {{-- <option value="blog " {{ old('type') == "blog" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "blog") ? 'selected' : '' ; }}>Blogs</option> --}}
+                                                     {{-- <option value="career " {{ old('type') == "career" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "career") ? 'selected' : '' ; }}>Career</option> --}}
+                                                     {{-- <option value="booking " {{ old('type') == "booking" ? 'selected' : '' }} {{ (isset($get_banner) && $get_banner->type == "booking") ? 'selected' : '' ; }}>Booking</option> --}}
                                             </select>
                                             @error('type')
                                             <div class="invalid-feedback">{{ $message }}</div>

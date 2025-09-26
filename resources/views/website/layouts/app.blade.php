@@ -4,15 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ? $title : 'Karnacab' }}</title>
+    <title>{{ isset($getSeo->meta_title) ? $getSeo->meta_title : $title }}</title>
     <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ Storage::url($globalSeo->favicon) }}" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
     <link href="{{ asset('website_assets/css/style.css') }}" rel="stylesheet" />
+    <meta name="keywords" content="{{ isset($getSeo->meta_keyword) ? $getSeo->meta_keyword : '' }}" />
+    <meta name="description" content="{{ isset($getSeo->meta_description) ? $getSeo->meta_description : '' }}" />
+    <meta name="robots" content="{{ isset($getSeo->meta_robot) ? $getSeo->meta_robot : '' }}" />
 </head>
+{{ isset($getSeo->header_script) ? $getSeo->header_script : '' }}
+{{ isset($globalSeo->header_script) ? $globalSeo->header_script : '' }}
 
 <body>
 
@@ -22,7 +27,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{{ route('/') }}">
-                <img src="{{ asset('website_assets/images/website logo-01.svg') }}" alt="KarnaCAB Logo">
+                <img src="{{ Storage::url($globalSeo->logo) }}" alt="KarnaCAB Logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -78,8 +83,8 @@
 
                 <!-- Customer App -->
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="footer-title">Customer App</h4>
-                    <p>Download our app to book rides easily and enjoy seamless travel.</p>
+                    <h4 class="footer-title">Rider App</h4>
+                    <p>Book rides in just a few taps! Our user-friendly app makes travel faster, safer, and more convenient. Get real-time updates, track your ride, and enjoy hassle-free payments.</p>
                     <a href="#"><img src="{{ asset('website_assets/images/gplay.PNG') }}" class="img-fluid mb-2"
                             alt="Google Play"></a>
                     <a href="#"><img src="{{ asset('website_assets/images/apstore.PNG') }}" class="img-fluid"
@@ -88,10 +93,12 @@
 
                 <!-- Captain App -->
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="footer-title">Captain App</h4>
-                    <p>Our dedicated app for captains to manage rides and earnings efficiently.</p>
-                    <a href="#"><img src="{{ asset('website_assets/images/gplay.PNG') }}" class="img-fluid"
+                    <h4 class="footer-title">Partner App</h4>
+                    <p>Manage your rides and earnings effortlessly. Our Partner App is designed for captains to stay connected, accept trips, track earnings, and optimize schedules — all in one place.</p>
+                    <a href="#"><img src="{{ asset('website_assets/images/gplay.PNG') }}" class="img-fluid mb-2"
                             alt="Google Play"></a>
+                             <a href="#"><img src="{{ asset('website_assets/images/apstore.PNG') }}" class="img-fluid"
+                            alt="App Store"></a>
                 </div>
 
                 <!-- Quick Links -->
@@ -129,15 +136,15 @@
                 <!-- Contact & Social -->
                 <div class="col-lg-3 col-md-6">
                     <h4 class="footer-title">Contact Us</h4>
-                    <p>Email: support@karnacab.com</p>
-                    <p>Phone: +91 123 456 7890</p>
-                    <p>Address: 123, City Road, State, India</p>
+                    <p>Email: {{ isset($globalSeo->email) ? $globalSeo->email : '' }}</p>
+                    <p>Phone: {{ isset($globalSeo->mobile) ? $globalSeo->mobile : '' }}</p>
+                    <p>Address: {{ isset($globalSeo->address) ? $globalSeo->address : '' }}</p>
                     <div class="social-icons mt-2">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="{{ isset($globalSeo->facebook) ? $globalSeo->facebook : '#' }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="{{ isset($globalSeo->twitter) ? $globalSeo->twitter : '#' }}" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="{{ isset($globalSeo->linkedin) ? $globalSeo->linkedin : '#' }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="{{ isset($globalSeo->instagram) ? $globalSeo->instagram : '#' }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="{{ isset($globalSeo->youtube_link) ? $globalSeo->youtube_link : '#' }}" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -161,10 +168,74 @@
             </div>
         </div>
     </footer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh3omxZlCKxzpHnX_5cXFyOE9OaMGqL_E&libraries=places">
+    </script>
+    <script>
+        function initAutocomplete() {
+            const pickupInput = document.getElementById('pickup');
+            const dropInput = document.getElementById('drop');
 
+            const pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput, {
+                types: ['geocode'],
+                componentRestrictions: {
+                    country: "in"
+                }
+            });
 
+            const dropAutocomplete = new google.maps.places.Autocomplete(dropInput, {
+                types: ['geocode'],
+                componentRestrictions: {
+                    country: "in"
+                }
+            });
 
+            pickupAutocomplete.addListener("place_changed", function() {
+                const place = pickupAutocomplete.getPlace();
+                console.log("Pickup Selected:", place.formatted_address);
+            });
 
+            dropAutocomplete.addListener("place_changed", function() {
+                const place = dropAutocomplete.getPlace();
+                console.log("Drop Selected:", place.formatted_address);
+            });
+        }
+
+        // Form validation
+        document.getElementById('rideForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const pickup = document.getElementById('pickup').value.trim();
+            const drop = document.getElementById('drop').value.trim();
+            const pickupError = document.getElementById('pickupError');
+            const dropError = document.getElementById('dropError');
+
+            let valid = true;
+
+            if (pickup === "") {
+                pickupError.style.display = "block";
+                valid = false;
+            } else {
+                pickupError.style.display = "none";
+            }
+
+            if (drop === "") {
+                dropError.style.display = "block";
+                valid = false;
+            } else {
+                dropError.style.display = "none";
+            }
+
+            if (valid) {
+                alert("Get more information for booking, use Karnacab Rider Application");
+            }
+        });
+
+        // Initialize Google autocomplete
+        window.onload = initAutocomplete;
+    </script>
+
+    {{ isset($getSeo->footer_script) ? $getSeo->footer_script : '' }}
+    {{ isset($globalSeo->footer_script) ? $globalSeo->footer_script : '' }}
 </body>
 
 </html>

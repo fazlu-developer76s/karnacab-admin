@@ -6,8 +6,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 text-center">
-                <p>&copy; {{ date('Y') }} Nerasoft. All rights reserved. Powered by <a href="https://nerasoft.in/"
-                        target="_blank">Nerasoft</a></p>
+                <p>&copy; {{ date('Y') }} KarnaCab. All rights reserved. Powered by <a href="https://karnacab.in/"
+                        target="_blank"> KarnaCab</a></p>
             </div>
         </div>
     </div>

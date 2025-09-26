@@ -21,6 +21,7 @@ class ServiceController extends Controller
         if ($request->method() == 'POST') {
             $request->validate([
                 'title' => 'required',
+                'text' => 'required',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
                 'status' => 'required',
             ]);
@@ -37,6 +38,7 @@ class ServiceController extends Controller
             }
             $services = new ServiceModal();
             $services->title = $request->title;
+            $services->text = $request->text;
             $services->status = $request->status;
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
@@ -60,6 +62,7 @@ class ServiceController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'text' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
             'status' => 'required',
         ]);
@@ -76,6 +79,7 @@ class ServiceController extends Controller
         }
         $services = ServiceModal::findOrFail($request->hidden_id);
         $services->title = $request->title;
+        $services->text = $request->text;
         $services->status = $request->status;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
